@@ -66,7 +66,9 @@ class EqualWeightPortfolio:
         """
         TODO: Complete Task 1 Below
         """
-
+        for index in df.index:
+            for columns in df.columns:
+                self.portfolio_weights.at[index,columns] = 1/11
         """
         TODO: Complete Task 1 Above
         """
@@ -117,7 +119,16 @@ class RiskParityPortfolio:
         """
         TODO: Complete Task 2 Below
         """
-
+        for index in df.index:
+            for columns in df.columns:
+                for date in range(index - self.lookback,index):
+                    sum=sum+df.at[date,columns]
+                    sumsum=sumsum+(df.at[date,columns])*(df.at[date,columns])
+                vol = {}
+                vol[columns] = (sumsum/50-(sum/50)**2)**0.5
+                volsum = volsum + vol[columns]
+            for columns in columns:
+                self.portfolio_weights.at[index,columns] = vol[columns]/volsum
         """
         TODO: Complete Task 2 Above
         """
