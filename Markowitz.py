@@ -71,7 +71,7 @@ class EqualWeightPortfolio:
         for i in range(11):
             m.append(0.09091)
         for indexs in df.index:
-            n = pd.DataFrame(m, columns=df.columns)
+            n = pd.DataFrame(m,index = indexs, columns=df.columns)
             self.portfolio_weights = pd.concat([self.portfolio_weights,m],axis=0)
         """
         TODO: Complete Task 1 Above
