@@ -66,7 +66,8 @@ class EqualWeightPortfolio:
         """
         TODO: Complete Task 1 Below
         """
-        self.portfolio_weights = pd.DataFrame(0.09091,index=df.index, columns=df.columns)
+        eqw = pd.DataFrame(0.09091,index=df.index, columns=df.columns)
+        self.portfolio_weights =  pd.DataFrame(0.09091,index=df.index, columns=df.columns)
         # m = []
         # for i in range(11):
         #     m.append(0.09091)
