@@ -68,8 +68,11 @@ class EqualWeightPortfolio:
         """
         eqw = pd.DataFrame(index=df.index, columns=df.columns)
         for index in df.index:
+            alist = []
             for columns in df.columns:
-                eqw[index,columns] = 1/11
+                alist.append(1/11)
+            frame = pd.DataFrame(pd.Series(alist),indexs = index)
+            eqw = pd.concat([eqw,frame],axis = 1)
         """
         TODO: Complete Task 1 Above
         """
