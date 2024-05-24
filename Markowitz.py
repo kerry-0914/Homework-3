@@ -69,7 +69,7 @@ class EqualWeightPortfolio:
         eqw = pd.DataFrame(index=df.index, columns=df.columns)
         m = []
         for i in range(11):
-            m.append(1/11)
+            m.append(0.09091)
         for indexs in df.index:
             eqw[indexs] = pd.Series(m)
         """
