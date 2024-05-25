@@ -119,7 +119,7 @@ class RiskParityPortfolio:
         TODO: Complete Task 2 Below
         """
          # Calculate rolling volatility for each asset
-        rolling_volatility = df_returns[assets].rolling(window=self.lookback).std()
+        rolling_volatility = pd.rolling_std(df_returns[assets],window=self.lookback)
 
         # Calculate the inverse of the rolling volatility
         inv_volatility = 1 / rolling_volatility
