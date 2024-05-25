@@ -118,16 +118,15 @@ class RiskParityPortfolio:
         """
         TODO: Complete Task 2 Below
         """
-        for index in df.index:
-            for columns in df.columns:
-                for date in range(index - self.lookback,index):
-                    sum=sum+df.at[date,columns]
-                    sumsum=sumsum+(df.at[date,columns])*(df.at[date,columns])
-                vol = {}
-                vol[columns] = (sumsum/50-(sum/50)**2)**0.5
-                volsum = volsum + vol[columns]
-            for columns in columns:
-                self.portfolio_weights.at[index,columns] = vol[columns]/volsum
+         # Calculate rolling volatility for each asset
+        rolling_volatility = self.df[assets].rolling(window=self.lookback).std()
+
+        # Calculate the inverse of the rolling volatility
+        inv_volatility = 1 / rolling_volatility
+
+        # Calculate the portfolio weights
+        self.portfolio_weights = inv_volatility.div(inv_volatility.sum(axis=1), axis=0)
+        
         """
         TODO: Complete Task 2 Above
         """
