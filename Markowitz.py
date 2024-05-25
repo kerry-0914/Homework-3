@@ -66,7 +66,7 @@ class EqualWeightPortfolio:
         """
         TODO: Complete Task 1 Below
         """
-        self.portfolio_weights.loc[:, :] = 0.09091
+        self.portfolio_weights[assets] = 0.09091
         # m = []
         # for i in range(11):
         #     m.append(0.09091)
