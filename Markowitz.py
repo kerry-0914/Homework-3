@@ -120,7 +120,7 @@ class RiskParityPortfolio:
         """
         rolling_volatility = df_returns[assets].rolling(window=self.lookback).std()
         inv_volatility = 1 / rolling_volatility
-        self.portfolio_weights = inv_volatility.div(inv_volatility.sum(axis=0), axis=1)
+        self.portfolio_weights[assets] = inv_volatility.div(inv_volatility.sum(axis=1), axis=0)
         
         """
         TODO: Complete Task 2 Above
